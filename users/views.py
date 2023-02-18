@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
-<<<<<<< HEAD
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import ProfilesModel
@@ -24,7 +23,6 @@ def ProfileView(request):
         'profile_form': profile_form
     })
 
-=======
 
 
 
@@ -61,4 +59,4 @@ def login_view(request):
 #     <input type="password" id="password" name="password"><br>
 #     <input type="submit" value="Login">
 # </form>
->>>>>>> d23ebdb2d2facf1088ebbbbfde340648b0b58fd4
+
