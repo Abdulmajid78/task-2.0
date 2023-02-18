@@ -28,3 +28,4 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['banners'] = BannerModel.objects.filter(status=True)
         return context
+
