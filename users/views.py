@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
 
+
+
 def logout_view(request):
     logout(request)
     return redirect('main:home')
@@ -20,16 +22,18 @@ def login_view(request):
             return render(request, 'login.html', {'error_message': error_message})
     else:
         return render(request, 'login.html')
-
+#
 # {% if error_message %}
 #     <p>{{ error_message }}</p>
 # {% endif %}
 #
 # <form method="post" action="{% url 'login' %}">
 #     {% csrf_token %}
-#     <label for="username">Username:</label>
+#
 #     <input type="text" id="username" name="username"><br>
-#     <label for="password">Password:</label>
+#
+#
+#
 #     <input type="password" id="password" name="password"><br>
 #     <input type="submit" value="Login">
 # </form>
