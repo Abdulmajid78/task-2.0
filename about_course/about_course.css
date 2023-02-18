@@ -54,9 +54,12 @@ ul {
 
 .course-content {
     display: flex;
-    align-items: center;
     margin-top: 20px;
+    gap: 50px;
+}
 
+.course-content-img-block {
+    width: 297px;
 }
 
 .course-btn {
@@ -89,4 +92,15 @@ ul {
 .course-name {
     font-size: 40px;
     font-weight: bold;
+}
+
+.about-course {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.course-text {
+    font-size: 24px;
+    color: #6F6F6F;
 }
