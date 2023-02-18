@@ -14,7 +14,7 @@ class UsersModel(AbstractUser):
 
 
 class StudentsModel(models.Model):
-    users  = models.OneToOneField(UsersModel, on_delete=models.CASCADE, related_name='student')
+    user = models.OneToOneField(UsersModel, on_delete=models.CASCADE, related_name='student')
     address = models.CharField(max_length=255, null=True, blank=True)
     zip_code = models.CharField(max_length=20, null=True, blank=True)
     phone = models.CharField(max_length=16, null=True, blank=True)
@@ -35,6 +35,9 @@ class StudentsModel(models.Model):
 
     def status_selector(self):
         return self.status in (self.s, self.c)
+
+    def get_full_name(self):
+        return self.user.get_full_name()
 
     class Meta:
         verbose_name = 'student'
@@ -59,8 +62,8 @@ class TeachersModel(models.Model):
     zip_code = models.CharField(max_length=20, null=True, blank=True)
     phone = models.CharField(max_length=16, null=True, blank=True)
 
-    def __str__(self):
-        return self.user
+    def get_full_name(self):
+        return self.user.get_full_name()
 
     class Meta:
         verbose_name = 'teacher'
