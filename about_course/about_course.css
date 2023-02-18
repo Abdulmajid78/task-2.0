@@ -72,6 +72,10 @@ ul {
     background-color: #c90c1b;
 }
 
+.course-btn:active {
+    background-color: #ee3241;
+}
+
 .course-title {
     font-size: 40px;
     color: #EC1B2E;
