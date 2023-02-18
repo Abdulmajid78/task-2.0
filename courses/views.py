@@ -5,7 +5,7 @@ from django.views.generic import DetailView
 
 
 class CoursesModelView(ListView):
-    template_name = 'courses.html'
+    template_name = 'courses/courses.html'
     model = CoursesModel
     paginate_by = 9
 

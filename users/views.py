@@ -4,7 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import ProfilesModel
-from .forms import  ProfileForm, UserForm
+from .forms import ProfileForm, UserForm
+
 
 @login_required
 def ProfileView(request):
@@ -24,8 +25,6 @@ def ProfileView(request):
     })
 
 
-
-
 def logout_view(request):
     logout(request)
     return redirect('main:home')
@@ -38,25 +37,9 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('main:home')
         else:
             error_message = "Invalid username or password."
             return render(request, 'login.html', {'error_message': error_message})
     else:
         return render(request, 'login.html')
-#
-# {% if error_message %}
-#     <p>{{ error_message }}</p>
-# {% endif %}
-#
-# <form method="post" action="{% url 'login' %}">
-#     {% csrf_token %}
-#
-#     <input type="text" id="username" name="username"><br>
-#
-#
-#
-#     <input type="password" id="password" name="password"><br>
-#     <input type="submit" value="Login">
-# </form>
-
