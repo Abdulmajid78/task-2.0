@@ -28,6 +28,8 @@ INSTALLED_APPS = [
 
 
     'main',
+    'groups',
+    'main',
 
 ]
 
