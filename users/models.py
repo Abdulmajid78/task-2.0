@@ -3,7 +3,6 @@ from django.contrib.auth.models import AbstractUser
 
 
 class UsersModel(AbstractUser):
-    nickname = models.CharField(max_length=55)
 
     def get_full_name(self):
         return f'{self.first_name} {self.last_name}'
@@ -48,19 +47,18 @@ class TeacherDirectionsModel(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
-        return  self.name
+        return self.name
 
     class Meta:
-        verbose_name  = 'direction'
+        verbose_name = 'direction'
         verbose_name_plural = 'directions'
 
 
 class TeachersModel(models.Model):
     user = models.OneToOneField(UsersModel, on_delete=models.CASCADE, related_name='teacher')
     direction = models.ForeignKey(TeacherDirectionsModel, on_delete=models.RESTRICT, related_name='teacher')
-    address = models.CharField(max_length=255, null=True, blank=True)
-    zip_code = models.CharField(max_length=20, null=True, blank=True)
-    phone = models.CharField(max_length=16, null=True, blank=True)
+
+
 
     def get_full_name(self):
         return self.user.get_full_name()
@@ -68,3 +66,16 @@ class TeachersModel(models.Model):
     class Meta:
         verbose_name = 'teacher'
         verbose_name_plural = 'teacher'
+
+
+class ProfilesModel(models.Model):
+    user = models.OneToOneField(UsersModel, on_delete=models.CASCADE)
+    zip_code = models.CharField(max_length=20, null=True, blank=True)
+    phone = models.CharField(max_length=16, null=True, blank=True)
+    bio = models.TextField(max_length=500, blank=True)
+    location = models.CharField(max_length=30, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+
+
+    def __str__(self):
+        return self.user
