@@ -25,9 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'courses',
-    'groups',
     'main',
-
 ]
 
 MIDDLEWARE = [
@@ -98,9 +96,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-
-
-AUTH_USER_MODEL  = 'users.UsersModel'
+AUTH_USER_MODEL = 'users.UsersModel'
 
 STATIC_ROOT = BASE_DIR / 'static'
 

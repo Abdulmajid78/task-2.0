@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 
+<<<<<<< HEAD
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import ProfilesModel
@@ -22,3 +24,37 @@ def ProfileView(request):
         'profile_form': profile_form
     })
 
+=======
+
+def logout_view(request):
+    logout(request)
+    return redirect('main:home')
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            error_message = "Invalid username or password."
+            return render(request, 'login.html', {'error_message': error_message})
+    else:
+        return render(request, 'login.html')
+
+# {% if error_message %}
+#     <p>{{ error_message }}</p>
+# {% endif %}
+#
+# <form method="post" action="{% url 'login' %}">
+#     {% csrf_token %}
+#     <label for="username">Username:</label>
+#     <input type="text" id="username" name="username"><br>
+#     <label for="password">Password:</label>
+#     <input type="password" id="password" name="password"><br>
+#     <input type="submit" value="Login">
+# </form>
+>>>>>>> d23ebdb2d2facf1088ebbbbfde340648b0b58fd4

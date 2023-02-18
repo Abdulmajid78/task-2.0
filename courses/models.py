@@ -23,7 +23,7 @@ class CoursesModel(models.Model):
         return self.title
 
     class Meta:
-        verbose_name  = 'course'
+        verbose_name = 'course'
         verbose_name_plural = 'courses'
 
 
