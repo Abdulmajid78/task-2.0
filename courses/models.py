@@ -2,9 +2,20 @@ from django.db import models
 
 from users.models import  TeachersModel, StudentsModel
 
+class CategoriesModel(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
 
 class CoursesModel(models.Model):
     title = models.CharField(max_length=255)
+    category = models.ForeignKey(CategoriesModel, on_delete=models.CASCADE, related_name='courses')
     description = models.TextField(blank=True, null=True)
     price = models.PositiveIntegerField()
 
